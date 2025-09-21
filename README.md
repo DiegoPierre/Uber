@@ -52,6 +52,56 @@
 
 ---
 
+## Modèle K-Nearest Neighbors (KNN)
+
+Nous allons entraîner un modèle KNN pour prédire les annulations et évaluer sa performance.
+```python
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score, ConfusionMatrixDisplay
+
+# Initialisation du modèle KNN
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X_train, y_train)
+
+# Prédictions
+y_pred_knn = knn.predict(X_test)
+
+# Évaluation
+acc_knn = accuracy_score(y_test, y_pred_knn)
+print("Accuracy KNN :", acc_knn)
+
+# Matrice de confusion
+ConfusionMatrixDisplay.from_predictions(y_test, y_pred_knn)
+```
+<img src="Screenshot 2025-09-21 163453.png" width="400" style="display: block; margin: 0 auto;">
+<p style='text-align: center; font-style: italic; color: #7f8c8d;'>
+</p>
+
+##  Modèle Random Forest
+
+Nous allons entraîner un modèle Random Forest pour prédire les annulations et comparer la performance avec KNN.
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+# Initialisation du modèle Random Forest
+rf = RandomForestClassifier(n_estimators=200, max_depth=10, random_state=42)
+rf.fit(X_train, y_train)
+
+# Prédictions
+y_pred_rf = rf.predict(X_test)
+
+# Évaluation
+acc_rf = accuracy_score(y_test, y_pred_rf)
+print("Accuracy Random Forest :", acc_rf)
+
+# Matrice de confusion
+ConfusionMatrixDisplay.from_predictions(y_test, y_pred_rf)
+
+```
+<img src="Screenshot 2025-09-21 163554.png" width="400" style="display: block; margin: 0 auto;">
+<p style='text-align: center; font-style: italic; color: #7f8c8d;'>
+</p>
+
 ##  Limites du projet
 - Déséquilibre des classes : la majorité des trajets sont complétés.  
 - Certaines informations manquantes : raisons d’annulation, facteurs externes.  
