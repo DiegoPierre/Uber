@@ -101,6 +101,34 @@ ConfusionMatrixDisplay.from_predictions(y_test, y_pred_rf)
 <img src="Screenshot 2025-09-21 163554.png" width="400" style="display: block; margin: 0 auto;">
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
 </p>
+##  Évaluation des modèles
+
+Nous allons évaluer les modèles KNN et Random Forest avec plusieurs métriques pour mieux comprendre leur performance sur la classification des annulations.
+
+
+```python
+from sklearn.metrics import precision_score, recall_score, f1_score, classification_report
+
+# --- KNN ---
+print(" KNN :")
+print("Accuracy :", accuracy_score(y_test, y_pred_knn))
+print("Precision :", precision_score(y_test, y_pred_knn))
+print("Recall :", recall_score(y_test, y_pred_knn))
+print("F1-score :", f1_score(y_test, y_pred_knn))
+print("\nClassification report :\n", classification_report(y_test, y_pred_knn))
+
+# --- Random Forest ---
+print(" Random Forest :")
+print("Accuracy :", accuracy_score(y_test, y_pred_rf))
+print("Precision :", precision_score(y_test, y_pred_rf))
+print("Recall :", recall_score(y_test, y_pred_rf))
+print("F1-score :", f1_score(y_test, y_pred_rf))
+print("\nClassification report :\n", classification_report(y_test, y_pred_rf))
+```
+<img src="Screenshot 2025-09-21 163624.png" width="400" style="display: block; margin: 0 auto;">
+<p style='text-align: center; font-style: italic; color: #7f8c8d;'>
+</p>
+
 
 ##  Limites du projet
 - Déséquilibre des classes : la majorité des trajets sont complétés.  
