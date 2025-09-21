@@ -194,5 +194,5 @@ plt.show()
   - Améliorer la satisfaction des clients  
 - Prochaine étape : **déploiement en production et suivi des performances** pour ajuster le modèle en continu.
 
-**Email:septamalouison634@gmail.com
-  **
+Email:septamalouison634@gmail.com
+  
