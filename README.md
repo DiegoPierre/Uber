@@ -129,6 +129,40 @@ print("\nClassification report :\n", classification_report(y_test, y_pred_rf))
 <p style='text-align: center; font-style: italic; color: #7f8c8d;'>
 </p>
 
+##  Optimisation des hyperparamètres : Random Forest
+
+Nous allons utiliser GridSearchCV pour trouver les meilleurs hyperparamètres du modèle Random Forest et améliorer sa performance sur la classification des annulations.
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import ConfusionMatrixDisplay, classification_report
+
+# =========================
+# 1️⃣ Matrice de confusion
+# =========================
+disp = ConfusionMatrixDisplay.from_estimator(
+    best_rf, X_test, y_test, 
+    cmap="Blues", 
+    xticks_rotation=45
+)
+plt.title("Matrice de confusion - Random Forest")
+plt.show()
+```
+<img src="Screenshot 2025-09-21 163649.png" width="400" style="display: block; margin: 0 auto;">
+<p style='text-align: center; font-style: italic; color: #7f8c8d;'>
+</p>
+
+```python
+plt.figure(figsize=(10,6))
+sns.barplot(x=importances, y=features, color="skyblue")  # couleur unique
+plt.title("Importance des variables - Random Forest")
+plt.xlabel("Importance")
+plt.ylabel("Variables")
+plt.show()
+```
+<img src="Screenshot 2025-09-21 163726.png" width="400" style="display: block; margin: 0 auto;">
+<p style='text-align: center; font-style: italic; color: #7f8c8d;'>
+</p>
 
 ##  Limites du projet
 - Déséquilibre des classes : la majorité des trajets sont complétés.  
@@ -159,3 +193,6 @@ print("\nClassification report :\n", classification_report(y_test, y_pred_rf))
   - Optimiser les revenus par trajet  
   - Améliorer la satisfaction des clients  
 - Prochaine étape : **déploiement en production et suivi des performances** pour ajuster le modèle en continu.
+
+**Email:septamalouison634@gmail.com
+  **
